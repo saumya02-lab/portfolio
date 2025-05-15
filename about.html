@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Me</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: url('sectionimage.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .top-right-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .home-link {
+	   background-color:white;
+      font-weight: bold;
+      margin-right: 2px;
+      font-size: 18px;
+      color: black;
+      text-decoration: none;
+      border: 1px solid blue;
+      padding: 6px 12px;
+      border-radius: 5px;
+      transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+      user-select: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .home-link:hover {
+      color: blue;
+      box-shadow: 0 0 8px blue;
+    }
+
+    .home-link:active {
+      animation: burst 0.5s ease forwards;
+      box-shadow: 0 0 20px blue;
+      transform: scale(1.2);
+    }
+
+    .home-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(0, 0, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease, opacity 0.5s ease;
+      z-index: 0;
+    }
+
+    .home-link:active::after {
+      width: 200%;
+      height: 200%;
+      opacity: 0;
+    }
+
+    @keyframes burst {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px blue;
+      }
+      50% {
+        transform: scale(1.25);
+        box-shadow: 0 0 25px blue;
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px blue;
+      }
+    }
+
+    /* About Me Section */
+    .about-me {
+      width: 1200px;
+      background-color: #ffffff;
+      border: 4px solid #222; /* bolder border */
+      border-radius: 12px;
+      padding: 20px 30px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin: 0 auto;
+      margin-top: 0;
+      animation: slideIn 1s ease-out;
+      position: relative;
+      top: -10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-me-title {
+      font-size: 32px; /* bigger font */
+      font-weight: bold;
+      margin: 0;
+      white-space: nowrap;
+      color: #007bff; /* blue color */
+      animation: rollFont 3s linear infinite;
+    }
+
+    .about-me-container {
+      font-size: 18px;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(-50%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Roll font animation */
+    @keyframes rollFont {
+      0% { transform: rotateX(0deg); }
+      100% { transform: rotateX(360deg); }
+    }
+
+    /* Container for other boxes */
+    .box-container {
+      width: 1200px;
+      margin: 20px auto 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 40px;
+      justify-content: center;
+    }
+
+    .box {
+      background-color: #f0f8ff;
+      cursor: pointer;
+      border: 2.5px solid #007bff; /* bold blue border */
+      border-radius: 10px;
+      width: 350px; /* bigger width */
+      padding: 20px 25px;
+      font-size: 20px; /* bigger font */
+      font-weight: 600;
+      color: #007bff; /* blue font color */
+      position: relative;
+      user-select: none;
+      box-shadow: 0 3px 10px rgba(0, 123, 255, 0.15);
+      overflow: hidden;
+    }
+
+    .box .detail-container {
+      position: relative;
+      display: none;
+      margin-top: 15px;
+      font-size: 16px;
+      color: #0056b3;
+      max-height: 250px;
+      overflow-y: auto;
+      border-top: 1px solid #007bff;
+      padding-top: 12px;
+    }
+
+    .box.active .detail-container {
+      display: block;
+    }
+.detail-container {
+  background-color: white;     /* Background white */
+  border: 2px solid black;     /* Black border */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+  color: black;                /* Normal text black */
+}
+
+.detail-container strong,
+.detail-container a {
+  color: blue;                 /* Strong text aur links blue */
+  font-weight: bold;           /* Bold rahe */
+  text-decoration: none;       /* Links ke liye underline nahi */
+}
+
+.detail-container a:hover {
+  text-decoration: underline; /* Hover par underline */
+}
+
+    /* Animation from left */
+    .slide-from-left {
+      animation: slideFromLeft 0.7s ease forwards;
+    }
+    @keyframes slideFromLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Animation from right */
+    .slide-from-right {
+      animation: slideFromRight 0.7s ease forwards;
+    }
+    @keyframes slideFromRight {
+      0% {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+	
+	/* Button at bottom left */
+  #rateBtn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  /* Rating container (hidden by default) */
+  #ratingBox {
+    position: fixed;
+    bottom: 60px;
+    left: 20px;
+    background: white;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: none;
+    width: 200px;
+    text-align: center;
+  }
+
+  /* Stars */
+  .star {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s;
+    user-select: none;
+  }
+  .star:hover,
+  .star.selected {
+    color: #007bff;
+  }
+  .thank-you-text {
+  color: white;
+  text-align: center;  /* optional, center me dikhana hai to */
+  margin-top: 20px;    /* thoda space dena upar se */
+  font-weight: bold;   /* agar bold chahiye */
+  font-size: 18px;     /* size adjust kar sakte hain */
+}
+
+  </style>
+</head>
+<body>
+  <div class="top-right-button">
+    <a href="index.html" class="home-link">
+      <span>H</span><span>o</span><span>m</span><span>e</span>
+    </a>
+  </div>
+
+  <section id="about">
+    <div class="about-me">
+      <div class="about-me-title">About Me</div>
+      <div class="about-me-container">
+        <p>
+          Hello! I'm <strong>Saumya Pathak</strong>, a dedicated and enthusiastic tech learner who has recently completed her <strong>Bachelor of Computer Applications (BCA)</strong>.
+          With a strong foundation in programming and problem-solving, I have developed a keen interest in <strong>Cloud Computing</strong> and <strong>Web Technologies</strong>.
+        </p>
+        <p>
+          I am currently seeking <strong>online internship opportunities</strong> in these domains, preferably with companies based in <strong>Delhi or Noida</strong>, where I can contribute, grow, and gain real-world experience.
+        </p>
+      </div>
+    </div>
+
+    <div class="box-container">
+      <div class="box" onclick="toggleBox(this)" data-anim="left">
+        Contact
+        <div class="detail-container">
+          <ul>
+            <li><strong>Name:</strong> Saumya Pathak</li>
+            <li><strong>Email:</strong> <a href="mailto:saumyapathak38@gmail.com">saumyapathak38@gmail.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+917897753860">+91 7897753860</a></li>
+            <li><strong>Location:</strong> Chitrakoot, Uttar Pradesh</li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/saumya-pathak-339825235" target="_blank">linkedin.com/in/saumya-pathak</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/saumya02-lab" target="_blank">github.com/saumya02-lab</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="box" onclick="toggleBox(this)" data-anim="right">
+        Skills
+        <div class="detail-container">
+          <ul>
+            <li><strong>Programming Languages:</strong> C, C++, Java, Python</li>
+            <li><strong>Web Technologies:</strong> HTML, CSS, JavaScript, ASP.NET, PHP</li>
+            <li><strong>Databases:</strong> MySQL, SQL Server</li>
+            <li><strong>Tools & Platforms:</strong> Git, GitHub, Visual Studio, Android Studio, VS Code</li>
+            <li><strong>Cloud Platforms:</strong> Microsoft Azure, AWS (basic), Google Cloud (basic)</li>
+            <li><strong>Other Skills:</strong> Teamwork, Communication, Problem-solving, Adaptability</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="box" onclick="toggleBox(this)" data-anim="left">
+        Education
+        <div class="detail-container">
+          <ul>
+            <li><strong>BCA (Bachelor of Computer Applications):</strong> Makhanlal Chaturvedi National University of Journalism and Communication ,BHOPAL (2021 - 2024)</li>
+            <li><strong>Senior Secondary (12th):</strong> St. Andrew's Sr. Sec School, Daltonganj (2018)</li>
+            <li><strong>Secondary (10th):</strong> St. Andrew's Sr. Sec School, Daltonganj (2016)</li>
+          </ul>
+        </div>
+      </div>
+	 
+	 <div class="box projects" onclick="toggleBox(this)">
+      Projects
+      <div class="detail-container">
+        <ul>
+          <li><strong>College Management System</strong> - Developed a web-based system using ASP.NET and SQL Server for managing student, teacher, and course data.</li>
+          <li><strong>Online Food Ordering System</strong> - Created a responsive website with PHP and MySQL for local restaurants.</li>
+          <li><strong>Personal Portfolio Website</strong> - Designed and developed a portfolio site showcasing projects and skills using HTML, CSS, and JavaScript.</li>
+        </ul>
+      </div>
+    </div>
+	
+	<div class="box" onclick="toggleBox(this)">
+        Certificates
+        <div class="detail-container">
+          <p>This is certificate content.</p>
+        </div>
+      </div>
+	  
+    <div class="box resume" onclick="toggleBox(this)">
+      Resume
+      <div class="detail-container">
+        <p>Click <a href="Saumya_Pathak_Resume.pdf" target="_blank">here</a> to view/download my resume.</p>
+      </div>
+    </div>
+	</div>
+	<p class="thank-you-text">Grateful for your time here!! I appreciate your visit</p>
+  </section>
+  <button id="rateBtn">Rate Me</button>
+
+<div id="ratingBox">
+  <p>Please rate me:</p>
+  <span class="star" data-value="1">&#9733;</span>
+  <span class="star" data-value="2">&#9733;</span>
+  <span class="star" data-value="3">&#9733;</span>
+  <span class="star" data-value="4">&#9733;</span>
+  <span class="star" data-value="5">&#9733;</span>
+  <p id="ratingResult" style="margin-top:10px; font-weight:bold;"></p>
+</div>
+
+  <script>
+    function toggleBox(box) {
+      // Toggle active class
+      const isActive = box.classList.contains('active');
+
+      // Close all other boxes
+      document.querySelectorAll('.box').forEach(b => {
+        b.classList.remove('active');
+        b.querySelector('.detail-container').style.display = 'none';
+        b.classList.remove('slide-from-left', 'slide-from-right');
+      });
+
+      if (!isActive) {
+        box.classList.add('active');
+        const details = box.querySelector('.detail-container');
+        details.style.display = 'block';
+
+        // Add slide animation depending on data-anim attribute
+        if (box.dataset.anim === 'left') {
+          box.classList.add('slide-from-left');
+        } else {
+          box.classList.add('slide-from-right');
+        }
+      }
+    }
+	
+	const rateBtn = document.getElementById('rateBtn');
+  const ratingBox = document.getElementById('ratingBox');
+  const stars = document.querySelectorAll('.star');
+  const ratingResult = document.getElementById('ratingResult');
+
+  // Show/hide rating box on button click
+  rateBtn.addEventListener('click', () => {
+    if (ratingBox.style.display === 'none' || ratingBox.style.display === '') {
+      ratingBox.style.display = 'block';
+    } else {
+      ratingBox.style.display = 'none';
+    }
+  });
+
+  // Handle star clicks
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      const rating = star.getAttribute('data-value');
+      ratingResult.textContent = `You rated: ${rating} star${rating > 1 ? 's' : ''}`;
+
+      // Highlight stars up to selected one
+      stars.forEach(s => {
+        if (s.getAttribute('data-value') <= rating) {
+          s.classList.add('selected');
+        } else {
+          s.classList.remove('selected');
+        }
+      });
+
+      // You can send this rating to server here if needed
+    });
+  });
+  </script>
+</body>
+</html>

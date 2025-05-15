@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="circle"></div>
+
+
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="nav-right">
+        <a href="about.html" class="btn-link">About Me</a> 
+    </div>
+</nav>
+
+<!-- Home Section -->
+<section class="home" id="home">
+    <div class="home-left">
+        <h1 id="typing-text"></h1> <!-- Blank initially, will be filled by JS -->
+    </div>
+
+    <div class="home-right">
+        <img src="saumyaremove.png" alt="Your Image" class="animated-image">
+    </div>
+</section>
+
+
+<!-- JavaScript Typing Animation -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const text = "Aspiring Cloud Developer to hire";
+        const typingText = document.getElementById("typing-text");
+        let index = 0;
+        const speed = 100; // typing speed in milliseconds
+
+        function typeWriter() {
+            if (index < text.length) {
+                typingText.innerHTML += `<span style="color: white;">${text.charAt(index)}</span>`;
+                index++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        typeWriter();
+    });
+</script>
+
+</body>
+</html>
